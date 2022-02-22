@@ -216,5 +216,8 @@
     <Media Include="Resources\Sound\munch.wav">
       <Filter>Arquivos de Recurso</Filter>
     </Media>
+    <Media Include="Resources\Sound\remix_theme.wav">
+      <Filter>Arquivos de Recurso</Filter>
+    </Media>
   </ItemGroup>
 </Project>

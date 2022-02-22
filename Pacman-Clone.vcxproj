@@ -219,6 +219,9 @@
     <Media Include="Resources\Sound\munch_1.wav" />
     <Media Include="Resources\Sound\munch_2.wav" />
     <Media Include="Resources\Sound\power_pellet.wav" />
+    <Media Include="Resources\Sound\remix_theme.wav">
+      <DeploymentContent>false</DeploymentContent>
+    </Media>
     <Media Include="Resources\Sound\retreating.wav" />
     <Media Include="Resources\Sound\siren_1.wav" />
     <Media Include="Resources\Sound\siren_2.wav" />

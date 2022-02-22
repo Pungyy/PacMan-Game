@@ -53,13 +53,13 @@ void Pacman::Update(const float& deltaTime)
 			nextDir = Right;
 
 		//Arrow movement
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 			nextDir = Up;
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 			nextDir = Down;
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 			nextDir = Left;
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 			nextDir = Right;
 		//handle eating snack sound effect
 		if (isEatingSnacks && !audio.IsPlayingAudio(Sounds::Munch))

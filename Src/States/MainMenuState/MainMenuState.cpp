@@ -4,6 +4,7 @@
 #include "../../GameManager.h"
 #include "../GameState/GameState.h"
 
+
 MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* states, GameManager* gameManager)
 	: State(window, states, gameManager)
 {
@@ -31,6 +32,7 @@ MainMenuState::~MainMenuState()
 		delete it->second;
 	}
 	// Load music and play.
+	audio.PlaySound(Sounds::Menu, true, VOLUME_MENU);
 
 }
 
