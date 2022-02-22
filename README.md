@@ -1,5 +1,5 @@
 # Pacman
-Voici notre jeu Pac-man créer en langage C et SML
+Voici notre jeu Pac-Man créer en langage C et SML
 
 
 ## Captures d'écran
