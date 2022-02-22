@@ -9,7 +9,7 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 	: State(window, states, gameManager)
 {
 	this->buttons["GAME_STATE"] = new Button(
-		window->getView().getCenter().x - 100, 480.f,
+		window->getView().getCenter().x - 100, 780.f,
 		200.f, 53.f,
 		"Nouvelle partie :)", 50,
 		sf::Color::Yellow, sf::Color(250, 250, 250, 250), sf::Color(20, 20, 20, 50)
@@ -19,7 +19,7 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 	{
 		mapTexture.setSmooth(false);
 		mapSprite.setTexture(mapTexture);
-		mapSprite.setScale(0.1f, 0.1f);
+		mapSprite.setScale(0.2f, 0.2f);
 		mapSprite.setPosition(window->getView().getCenter().x - (mapSprite.getGlobalBounds().width / 2), 20);
 	}
 }
@@ -32,7 +32,6 @@ MainMenuState::~MainMenuState()
 		delete it->second;
 	}
 	// Load music and play.
-	audio.PlaySound(Sounds::Menu, true, VOLUME_MENU);
 
 }
 

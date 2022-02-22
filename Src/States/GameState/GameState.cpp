@@ -310,11 +310,10 @@ void GameState::CreateUI()
 
     UpdateUI();
 }
-
 void GameState::UpdateUI() 
 {
     this->scoreText.setString("Score : " + std::to_string(score));
-    this->lifesText.setString("Lifes : " + std::to_string(lifes));
+    this->lifesText.setString("Nombre de vie(s) : " + std::to_string(lifes));
 }
 
 void GameState::FreezeGame(Entities entityThatWontFreeze)

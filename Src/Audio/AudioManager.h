@@ -35,7 +35,5 @@ private:
 	sf::SoundBuffer retreatingBuffer;
 	sf::Sound retreatingSound;
 
-	sf::SoundBuffer MenuBuffer;
-	sf::Sound MenuSound;
 };
 
