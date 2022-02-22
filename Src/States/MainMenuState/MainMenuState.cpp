@@ -32,7 +32,6 @@ MainMenuState::~MainMenuState()
 		delete it->second;
 	}
 	// Load music and play.
-	audio.PlaySound(Sounds::Menu, true, VOLUME_MENU);
 
 }
 

@@ -7,12 +7,10 @@
 #define AUDIO_MUNCH "Resources/Sound/munch.wav"
 #define AUDIO_SIREN "Resources/Sound/siren_1.wav"
 #define AUDIO_RETREATING "Resources/Sound/retreating.wav"
-#define AUDIO_MENU "Resources/Sound/remix_theme.wav"
 
 #define VOLUME 50
 #define VOLUME_MUNCH 10
 #define VOLUME_SIREN 60
-#define VOLUME_MENU 50
 
 enum class Sounds {
 	None,
@@ -22,6 +20,5 @@ enum class Sounds {
 	Munch,
 	GameStart,
 	Siren,
-	Retreating,
-	Menu
+	Retreating
 };
