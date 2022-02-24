@@ -31,8 +31,7 @@ MainMenuState::~MainMenuState()
 	{
 		delete it->second;
 	}
-	// Charge et lance la musique.
-	//audio.PlaySound(Sounds::Menu, true, VOLUME_MENU);
+	// Load music and play.
 
 }
 
@@ -43,7 +42,7 @@ void MainMenuState::Update(const float& deltaTime)
 		it.second->update(this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window)));
 	}
 
-	//Nouvelle partie
+	//New game
 	if (this->buttons["GAME_STATE"]->isPressed())
 	{
 		this->states->push(new GameState(window, states, gameManager));

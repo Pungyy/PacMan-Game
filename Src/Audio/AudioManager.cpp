@@ -24,6 +24,7 @@ AudioManager::AudioManager()
 
     retreatingBuffer.loadFromFile(AUDIO_RETREATING);
     retreatingSound.setBuffer(retreatingBuffer);
+
 }
 
 void AudioManager::PlaySound(Sounds soundType, bool loop, int volume)

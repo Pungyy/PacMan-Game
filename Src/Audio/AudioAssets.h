@@ -10,7 +10,7 @@
 
 #define VOLUME 50
 #define VOLUME_MUNCH 10
-#define VOLUME_SIREN 40
+#define VOLUME_SIREN 60
 
 enum class Sounds {
 	None,
