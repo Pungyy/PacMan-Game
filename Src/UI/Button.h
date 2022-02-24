@@ -30,7 +30,7 @@ public:
 		sf::Color text_idle_color, sf::Color text_hover_color, sf::Color text_active_color);
 	~Button();
 
-	//Accessors
+	//Accessoires
 	const bool isPressed() const;
 
 	//Functions

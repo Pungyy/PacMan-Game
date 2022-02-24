@@ -79,9 +79,9 @@ void GameState::Restart()
 
 void GameState::Update(const float& deltaTime)
 {
-    //Logic
+    //Logique
 
-    //if initial music has played, start the game
+    //si la musique initiale est joué, démarrez le jeu
     if (!audioManager.IsPlayingAudio(Sounds::GameStart) && !gameHasStarted)
     {
         isFreezed = false;
@@ -90,7 +90,7 @@ void GameState::Update(const float& deltaTime)
 
     }
 
-    //updating entities that are not freezed
+    //mise à jour des entités qui ne sont pas figées
     if(isFreezed == false || entityThatWontFreeze == Entities::Pacman)
         pacman->Update(deltaTime);
 
@@ -108,7 +108,7 @@ void GameState::Update(const float& deltaTime)
         x->Update(deltaTime);
     }
 
-    //if pacman is dead, wait death music to stop before restarting the game
+    //si pacman est mort, attendez que la musique de la mort s'arrête avant de redémarrer le jeu
     if (isPacmanDead && !audioManager.IsPlayingAudio(Sounds::Death))
     {
         if (lifes == 0)
@@ -120,7 +120,7 @@ void GameState::Update(const float& deltaTime)
     }
 
 
-    //render
+    //Afficher
     UpdateUI();
     Draw();
 }
@@ -139,15 +139,7 @@ void GameState::Draw()
 
     pacman->Draw(*window);
 
-    //draw walls colliders
-    //for (int i = 0; i < NumberOfTilesX; i++)
-    //{
-    //    for (int j = 0 ; j < NumberOfTilesY; j++)
-    //    {
-    //        if(tileArray[i][j].DoesTileHaveType(sTile::TileType::Wall))
-    //            DrawCube(*window, sf::Vector2i(i, j), this);
-    //    }
-    //}
+  
 
     for (auto const& x : enemys)
     {
@@ -172,7 +164,7 @@ void GameState::LoadTextures()
     }
     else
     {
-        std::cout << "texture not loaded correctly" << std::endl;
+        std::cout << "texture non charger correctement" << std::endl;
     }
 
     if (gameOverTextTexture.loadFromFile("Resources/ready-gameover.png", sf::IntRect(0, 0, 175, 22)))
@@ -183,7 +175,7 @@ void GameState::LoadTextures()
     }
     else
     {
-        std::cout << "texture not loaded correctly" << std::endl;
+        std::cout << "texture non charger correctement" << std::endl;
     }
 
     if (readyTextTexture.loadFromFile("Resources/ready-gameover.png", sf::IntRect(178, 0, 279, 22)))
@@ -194,10 +186,10 @@ void GameState::LoadTextures()
     }
     else
     {
-        std::cout << "texture not loaded correctly" << std::endl;
+        std::cout << "texture non charger correctement" << std::endl;
     }
 }
-
+//carte du jeu niv 1
 void GameState::CreateMapCollidersAndSnacks()
 {
     int mapDesign[NumberOfTilesY][NumberOfTilesX] = {
@@ -238,31 +230,31 @@ void GameState::CreateMapCollidersAndSnacks()
     {
         for (int x = 0; x < NumberOfTilesX; x++)
         {
-            if (mapDesign[y][x] == 0) // small snack
+            if (mapDesign[y][x] == 0) // petite pacgomme
             {
                 tileArray[x][y].isEmpty = false;
                 tileArray[x][y].tileTypes.push_back(sTile::Snack);
                 Snack* s = new Snack(Snack::SmallSnack, sf::Vector2i(x, y), this);
                 SnackList.push_back(s);
             }
-            else if (mapDesign[y][x] == 1) // wall collider
+            else if (mapDesign[y][x] == 1) // colision mur
             {
                 tileArray[x][y].isEmpty = false;
                 tileArray[x][y].tileTypes.push_back(sTile::Wall);
             }
-            else if (mapDesign[y][x] == 2) // ghost house
+            else if (mapDesign[y][x] == 2) // maison des fantome
             {
                 tileArray[x][y].isEmpty = false;
                 tileArray[x][y].tileTypes.push_back(sTile::GhostHouse);
             }
-            else if (mapDesign[y][x] == 3) // big snack
+            else if (mapDesign[y][x] == 3) // Gros pacgomme
             {
                 tileArray[x][y].isEmpty = false;
                 tileArray[x][y].tileTypes.push_back(sTile::Snack);
                 Snack* s = new Snack(Snack::BigSnack, sf::Vector2i(x, y), this);
                 SnackList.push_back(s);
             }
-            else if (mapDesign[y][x] == 5) // empty
+            else if (mapDesign[y][x] == 5) // vide
             {
             }
         }
@@ -296,13 +288,13 @@ void GameState::CreateUI()
 {
     font.loadFromFile("Fonts/Dosis-Light.ttf");
 
-    //creating score text
+    //creer score du texte
     this->scoreText.setFont(this->font);
     this->scoreText.setFillColor(sf::Color::White);
     this->scoreText.setCharacterSize(36);
     this->scoreText.setPosition(10, 800);
 
-    //creating lives text
+    //creer score des vies
     this->lifesText.setFont(this->font);
     this->lifesText.setFillColor(sf::Color::White);
     this->lifesText.setCharacterSize(36);

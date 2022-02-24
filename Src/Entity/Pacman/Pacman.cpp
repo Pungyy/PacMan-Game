@@ -19,7 +19,7 @@ Pacman::Pacman(int tileX, int tileY, GameState* gameState)
 	if (texture.loadFromFile("Resources/PacManSprites.png", sf::IntRect(230, 1, 13, 13)))
 		body.setTexture(&texture);
 	else
-		std::cout << "texture not loaded correctly" << std::endl;
+		std::cout << "texture non charger correctement" << std::endl;
 
 	body.move(sf::Vector2f(30 * tileX, 25.5f * tileY));
 }
@@ -52,7 +52,7 @@ void Pacman::Update(const float& deltaTime)
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 			nextDir = Right;
 
-		//Arrow movement
+		//Fleche movement
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 			nextDir = Up;
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
@@ -61,7 +61,7 @@ void Pacman::Update(const float& deltaTime)
 			nextDir = Left;
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 			nextDir = Right;
-		//handle eating snack sound effect
+		//gérer l'effet sonore de la nourriture
 		if (isEatingSnacks && !audio.IsPlayingAudio(Sounds::Munch))
 			audio.PlaySound(Sounds::Munch, true, VOLUME_MUNCH);
 		else if (!isEatingSnacks && audio.IsPlayingAudio(Sounds::Munch))
@@ -135,7 +135,7 @@ void Pacman::UpdatePlayerTilePosition()
 			ChangeAnimation(currentDir);
 		}
 
-		//nextDir = None;
+
 	}
 
 	
@@ -173,14 +173,14 @@ void Pacman::UpdatePlayerTilePosition()
 				break;
 			}
 		}
-		//if the player is stuck on a corner, and its not a teleport tile, munching sound should stop playing
+		//si le joueur est coincé dans un coin et qu'il ne s'agit pas d'une tuile de téléportation, le son de grignotage devrait cesser de jouer
 		if (isEatingSnacks) isEatingSnacks = false;
 	}
 }
 
 void Pacman::UpdateTileArray(sf::Vector2i newPos) 
 {
-	//emptying current tile
+	//Case actuel vide
 	gameState->tileArray[gridPos.x][gridPos.y].isEmpty = true;
 	gameState->tileArray[gridPos.x][gridPos.y].EraseTileType(sTile::Player);
 
@@ -204,42 +204,46 @@ void Pacman::UpdateTileArray(sf::Vector2i newPos)
 			Die();
 	}
 
-	//transfering player to next tile
+	//transférer le joueur vers la case suivante
 	gameState->tileArray[gridPos.x][gridPos.y].isEmpty = false;
 	gameState->tileArray[gridPos.x][gridPos.y].tileTypes.push_back(sTile::Player);
 }
 
 void Pacman::SetupAnimations() 
 {
-	//right animation
+	//animation de droite
 	sf::Texture r1, r2, r3;
 	r1.loadFromFile("Resources/PacManSprites.png", sf::IntRect(230, 1, 13, 13));
 	r2.loadFromFile("Resources/PacManSprites.png", sf::IntRect(246, 1, 13, 13));
 	r3.loadFromFile("Resources/PacManSprites.png", sf::IntRect(262, 1, 13, 13));
+	//ordre execution
 	std::vector<sf::Texture> rightAnimTextures{ r1,r2,r3 };
 
-	//left animation
+	//animation de gauche
 	sf::Texture l1, l2, l3;
 	l1.loadFromFile("Resources/PacManSprites.png", sf::IntRect(230, 17, 13, 13));
 	l2.loadFromFile("Resources/PacManSprites.png", sf::IntRect(246, 17, 13, 13));
 	l3.loadFromFile("Resources/PacManSprites.png", sf::IntRect(262, 17, 13, 13));
+	//ordre execution
 	std::vector<sf::Texture> leftAnimTextures{ l1,l2,l3 };
 
-	//up animation
+	//animation vers le haut
 	sf::Texture u1, u2, u3;
 	u1.loadFromFile("Resources/PacManSprites.png", sf::IntRect(230, 33, 13, 13));
 	u2.loadFromFile("Resources/PacManSprites.png", sf::IntRect(246, 33, 13, 13));
 	u3.loadFromFile("Resources/PacManSprites.png", sf::IntRect(262, 33, 13, 13));
+	//ordre execution
 	std::vector<sf::Texture> upAnimTextures{ u1,u2,u3 };
 
-	//down animation
+	//animation vers le bas
 	sf::Texture d1, d2, d3;
 	d1.loadFromFile("Resources/PacManSprites.png", sf::IntRect(230, 49, 13, 13));
 	d2.loadFromFile("Resources/PacManSprites.png", sf::IntRect(246, 49, 13, 13));
 	d3.loadFromFile("Resources/PacManSprites.png", sf::IntRect(262, 49, 13, 13));
+	//ordre execution
 	std::vector<sf::Texture> downAnimTextures{ d1, d2, d3 };
 
-	//death animation
+	//animation mort
 	sf::Texture de1, de2, de3, de4, de5, de6, de7, de8, de9, de10, de11, de12;
 	de1.loadFromFile("Resources/PacManSprites.png", sf::IntRect(278, 1, 13, 13));
 	de2.loadFromFile("Resources/PacManSprites.png", sf::IntRect(294, 1, 13, 13));
@@ -253,8 +257,8 @@ void Pacman::SetupAnimations()
 	de10.loadFromFile("Resources/PacManSprites.png", sf::IntRect(422, 1, 13, 13));
 	de11.loadFromFile("Resources/PacManSprites.png", sf::IntRect(438, 1, 13, 13));
 	de12.loadFromFile("Resources/PacManSprites.png", sf::IntRect(438, 17, 13, 13));
+	//ordre execution
 	std::vector<sf::Texture> deathAnimTextures{ de1, de2, de3, de4, de5, de6, de7, de8, de9, de10, de11, de12 };
-
 	animations[0] = new Animation(leftAnimTextures);
 	animations[1] = new Animation(rightAnimTextures);
 	animations[2] = new Animation(upAnimTextures);

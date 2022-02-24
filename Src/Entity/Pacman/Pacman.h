@@ -17,7 +17,7 @@ public:
 private:
 	Animator* animator;
 	AudioManager audio;
-	Animation* animations[5];//left, right, up, down, death
+	Animation* animations[5];//gauche, droite, haut, bas, mort
 	Directions nextDir = None;
 	bool hasCompletedMovement = false;
 	bool isEatingSnacks = false;

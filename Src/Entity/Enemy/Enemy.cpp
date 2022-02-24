@@ -22,7 +22,7 @@ Enemy::Enemy(sf::Vector2i gridPos, sf::Vector2i texturePos, GameState* gameState
 	if (texture.loadFromFile("Resources/PacManSprites.png", sf::IntRect(texturePos.x, texturePos.y, 14, 14)))
 		body.setTexture(&texture);
 	else
-		std::cout << "texture not loaded correctly" << std::endl;
+		std::cout << "texture non charger correctement" << std::endl;
 
 	body.move(sf::Vector2f(30 * gridPos.x, 25.5f * gridPos.y));
 }
@@ -56,11 +56,11 @@ void Enemy::Update(const float& deltaTime)
 {
 	switch (state)
 	{
-	//updating frightened timer
+		//update timer fantomes mangable
 	case EnemyState::Frightened:
 		scaredTimer += deltaTime;
 
-		if (scaredTimer >= 6 && !hasStartedflickeringAnim){
+		if (scaredTimer >= 6 && !hasStartedflickeringAnim) {
 			animator->SetAnimationClip(animations[5]);
 			scaredTimer = 0;
 			hasStartedflickeringAnim = true;
@@ -75,7 +75,7 @@ void Enemy::Update(const float& deltaTime)
 		}
 		break;
 	case EnemyState::Eaten_FreezedGame:
-		//start retreating mode
+		//Start mode mangable
 		if (!audio.IsPlayingAudio(Sounds::EatGhost))
 		{
 			scaredTimer = 0;
@@ -90,25 +90,25 @@ void Enemy::Update(const float& deltaTime)
 		}
 		break;
 	case EnemyState::Eaten_Retreating:
-		//when ghost gets to ghost house, switch back to normal behaviour
+		//lorsque le fantôme arrive à la maison fantôme, reviens au comportement normal
 		if (gameState->tileArray[gridPos.x][gridPos.y].DoesTileHaveType(sTile::GhostHouse)) {
 			state = waves[currentWave].waveState;
 
 			audio.StopSound(Sounds::Retreating);
 
-			//only play sound if power snack effect is still active
-			if(gameState->powerSnackActive)
+			//ne jouer le son que si l'effet de collation est toujours actif
+			if (gameState->powerSnackActive)
 				gameState->audioManager.PlaySound(Sounds::PowerSnack, true, VOLUME);
 		}
 		break;
-	//updating wave system
+		//update wave system
 	default:
 		totalWaveTime += deltaTime;
 		if (totalWaveTime >= waves[currentWave].duration)
 		{
 			totalWaveTime -= waves[currentWave].duration;
 
-			if(currentWave < (sizeof(waves) / sizeof(waves[0])) - 1)
+			if (currentWave < (sizeof(waves) / sizeof(waves[0])) - 1)
 				currentWave++;
 
 			state = waves[currentWave].waveState;
@@ -116,10 +116,10 @@ void Enemy::Update(const float& deltaTime)
 		break;
 	}
 
-	if(state != EnemyState::Eaten_Retreating && state != EnemyState::Eaten_FreezedGame)
+	if (state != EnemyState::Eaten_Retreating && state != EnemyState::Eaten_FreezedGame)
 		animator->Update(deltaTime);
 
-	if(state != EnemyState::Eaten_FreezedGame)
+	if (state != EnemyState::Eaten_FreezedGame)
 		Move(deltaTime);
 }
 
@@ -168,19 +168,7 @@ void Enemy::Draw(sf::RenderWindow& rw)
 {
 	rw.draw(body);
 
-	//DrawCube(rw, gridPos, gameState);
 
-	//if (currentPath.size() > 0) {
-	//	switch (state)
-	//	{
-	//	case EnemyState::Scatter:
-	//		DrawPathfinding(rw, currentPath, gridPos, GetScatterTargetPosition());
-	//		break;
-	//	case EnemyState::Chase:
-	//		DrawPathfinding(rw, currentPath, gridPos, GetChaseTargetPosition());
-	//		break;
-	//	}
-	//}
 }
 
 void Enemy::UpdateEnemyTilePosition()
@@ -203,11 +191,11 @@ void Enemy::UpdateEnemyTilePosition()
 		break;
 	}
 
-	//in the case that no path is found, the enemy will set a neighbour tile as his path 
+	//dans le cas où aucun chemin n'est trouvé, l'ennemi placera une case voisine comme son chemin
 	if (pos.size() == 0) {
 		pos = FindPath(gridPos, GetOppositeDirectionNeighbour(), currentDir, gameState);
 
-		//in the case that no path is found, its because the enemy is about to be teleported to the other side of the screen
+		//dans le cas où aucun chemin n'est trouvé, c'est parce que l'ennemi est sur le point d'être téléporté de l'autre côté de l'écran
 		if (pos.size() == 0) {
 			sf::Vector2i p = gridPos;
 			switch (currentDir)
@@ -261,7 +249,7 @@ void Enemy::UpdateEnemyTilePosition()
 			ChangeAnimation();
 		}
 	}
-	
+
 	UpdateTileArray(pos[0]);
 }
 
@@ -341,9 +329,9 @@ sf::Vector2i Enemy::GetOppositeDirectionNeighbour()
 
 void Enemy::UpdateTileArray(sf::Vector2i newPos)
 {
-	//emptying current tile
+	//vider la case actuelle
 	bool hasSnack = gameState->FindSnackID(gridPos) == -1;
-	gameState->tileArray[gridPos.x][gridPos.y].isEmpty = hasSnack? true : false;
+	gameState->tileArray[gridPos.x][gridPos.y].isEmpty = hasSnack ? true : false;
 	gameState->tileArray[gridPos.x][gridPos.y].EraseTileType(sTile::Ghost);
 
 	gridPos = newPos;

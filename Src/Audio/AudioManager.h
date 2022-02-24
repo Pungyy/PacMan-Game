@@ -4,7 +4,6 @@
 #include "AudioAssets.h"
 
 
-//ATTENTION!! I know there is much better ways to do a audio manager, but i am feeling really lazy and i just want to finish this project as soon as possible, so DONT JUDGE ME...thanks
 class AudioManager
 {
 public:

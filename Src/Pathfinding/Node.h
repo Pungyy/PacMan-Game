@@ -26,7 +26,7 @@ struct sNode
 
 	~sNode()
 	{
-		//delete parent
+		//supprimer parent
 	}
 
 	std::vector<sNode> GetNeighbours()

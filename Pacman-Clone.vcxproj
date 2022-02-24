@@ -23,6 +23,7 @@
     <ProjectGuid>{B0E2D26A-FF94-486F-8756-B70631B85FF8}</ProjectGuid>
     <RootNamespace>PacmanClone</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Pacman-Projet</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

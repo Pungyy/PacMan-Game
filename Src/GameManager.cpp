@@ -41,7 +41,7 @@ void GameManager::Update()
             }
         }
 
-        //handle states
+        //gérer les états
         if (!this->states.empty())
         {
             this->states.top()->Update(deltaTime);
@@ -53,7 +53,7 @@ void GameManager::Update()
                 this->states.pop();
             }
         }
-        //Application end
+        //Fin de l'application
         else
         {
             this->window->close();
