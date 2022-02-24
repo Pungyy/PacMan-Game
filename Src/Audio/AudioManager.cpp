@@ -24,9 +24,6 @@ AudioManager::AudioManager()
 
     retreatingBuffer.loadFromFile(AUDIO_RETREATING);
     retreatingSound.setBuffer(retreatingBuffer);
-
-    MenuBuffer.loadFromFile(AUDIO_MENU);
-    MenuSound.setBuffer(MenuBuffer);
 }
 
 void AudioManager::PlaySound(Sounds soundType, bool loop, int volume)
@@ -69,11 +66,6 @@ void AudioManager::PlaySound(Sounds soundType, bool loop, int volume)
         retreatingSound.setVolume(volume);
         retreatingSound.play();
         break;
-    case Sounds::Menu:
-        MenuSound.setLoop(loop);
-        MenuSound.setVolume(volume);
-        MenuSound.play();
-        break;
     }
 
 }
@@ -112,9 +104,6 @@ void AudioManager::StopSound(Sounds soundType)
         sirenSound.stop();
         retreatingSound.stop();
         break;
-    case Sounds::Menu:
-        MenuSound.stop();
-        break;
     }
 }
 
@@ -142,9 +131,6 @@ bool AudioManager::IsPlayingAudio(Sounds soundType)
         break;
     case Sounds::Retreating:
         return retreatingSound.getStatus() == retreatingSound.Playing;
-        break;
-    case Sounds::Menu:
-        return MenuSound.getStatus() == MenuSound.Playing;
         break;
     }
 }

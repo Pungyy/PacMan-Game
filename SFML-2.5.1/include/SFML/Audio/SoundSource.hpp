@@ -51,7 +51,7 @@ public:
     {
         Stopped, 
         Paused,  
-        Playingx  
+        Playing  
     };
 
     SoundSource(const SoundSource& copy);

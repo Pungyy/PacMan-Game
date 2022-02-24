@@ -24,7 +24,7 @@ public:
 
     ~Sound();
 
-    void play();
+    void playing();
 
     void pause();
 
