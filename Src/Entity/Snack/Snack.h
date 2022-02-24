@@ -16,7 +16,7 @@ public:
     void Update(const float& deltaTime) override;
     void Draw(sf::RenderWindow& rw) override;
 private:
-    //todo delete animator and animation pointers on destructor
+    //todo supprimer l'animateur et les pointeurs d'animation sur le destructeur
     Animator* animator;
     Animation* bigSnackFlickerAnimation;
     void SetupAnimation();

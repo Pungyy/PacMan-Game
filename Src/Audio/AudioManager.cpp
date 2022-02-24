@@ -29,7 +29,7 @@ AudioManager::AudioManager()
 
 void AudioManager::PlaySound(Sounds soundType, bool loop, int volume)
 {
-    //new way
+    //Nouvelle loop musique
     switch (soundType)
     {
     case Sounds::PowerSnack:

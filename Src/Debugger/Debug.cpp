@@ -15,25 +15,7 @@ void DrawGrid(sf::RenderWindow& window, GameState* gameState)
             quad[2].color = sf::Color::White;
             quad[3].color = sf::Color::White;
             quad[4].color = sf::Color::White;
-            //if (!tileArray[x][y].isEmpty)
-            //{
-            //    if (tileArray[x][y].tileType == sTile::Player)
-            //    {
-            //        quad[0].color = sf::Color::Green;
-            //        quad[1].color = sf::Color::Green;
-            //        quad[2].color = sf::Color::Green;
-            //        quad[3].color = sf::Color::Green;
-            //        quad[4].color = sf::Color::Green;
-            //    }
-            //    else
-            //    {
-            //        quad[0].color = sf::Color::Red;
-            //        quad[1].color = sf::Color::Red;
-            //        quad[2].color = sf::Color::Red;
-            //        quad[3].color = sf::Color::Red;
-            //        quad[4].color = sf::Color::Red;
-            //    }
-            //}
+
 
 
             quad[0].position = vec;

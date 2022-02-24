@@ -40,15 +40,15 @@ const bool Button::isPressed() const
 
 void Button::update(const sf::Vector2f mousePos)
 {
-	//Idle
+	//Inactif
 	this->buttonState = BTN_IDLE;
 
-	//Hover
+	//flottant
 	if (this->shape.getGlobalBounds().contains(mousePos))
 	{
 		this->buttonState = BTN_HOVER;
 
-		//Pressed
+		//Pressée
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			this->buttonState = BTN_ACTIVE;
